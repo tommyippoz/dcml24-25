@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 from time import sleep
 import psutil
 import time
@@ -20,7 +21,7 @@ def read_data():
     This function reads data from the system
     :return: a dictionary
     """
-    data_dict = {"time": current_milli_time()}
+    data_dict = {"time": current_milli_time(), "datetime": datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
     cpu_probe(data_dict)
     vm_probe(data_dict)
     return data_dict
