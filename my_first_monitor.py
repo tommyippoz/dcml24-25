@@ -92,11 +92,12 @@ if __name__ == "__main__":
         # Monitors PSUtil data
         monit_data = read_data()
         # Monitor with PyShark for the remaining loop time (replaces sleep)
-        capture = pyshark.LiveCapture(interface='Ethernet 3')
-        capture.sniff(timeout=1)
-        capture.close()
+        # capture = pyshark.LiveCapture(interface='Wi-Fi')
+        #capture.sniff(timeout=1)
+        #capture.close()
         # Add PyShark data to dict
-        pyshark_parse(monit_data, capture)
+        #pyshark_parse(monit_data, capture)
         print(monit_data)
+        sleep(1)
         write_dict_to_csv("my_first_dataset.csv", monit_data, is_first_time)
         is_first_time = False
