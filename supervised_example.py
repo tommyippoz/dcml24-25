@@ -31,7 +31,7 @@ if __name__ == "__main__":
     """
 
     # load dataset PANDAS / NUMPY
-    my_dataset = read_csv("./labelled_dataset.csv")
+    my_dataset = read_csv("./input_folder/labelled_dataset.csv")
     label_obj = my_dataset["label"]
     data_obj = my_dataset.drop(columns=["label", "time", "datetime"])
     # the row above is "equivalent" to
@@ -45,10 +45,10 @@ if __name__ == "__main__":
     # Set of classifiers that I want to run and compare
     classifiers = [VotingClassifier(estimators=[('lda', LinearDiscriminantAnalysis()),
                                                 ('nb', GaussianNB()),
-                                                ('dt', tree.DecisionTreeClassifier())]),
+                                                ('dt', DecisionTreeClassifier())]),
                    StackingClassifier(estimators=[('lda', LinearDiscriminantAnalysis()),
                                                   ('nb', GaussianNB()),
-                                                  ('dt', tree.DecisionTreeClassifier())],
+                                                  ('dt', DecisionTreeClassifier())],
                                       final_estimator=RandomForestClassifier(n_estimators=10)),
                    DecisionTreeClassifier(),
                    GaussianNB(),

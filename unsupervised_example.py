@@ -34,7 +34,7 @@ if __name__ == "__main__":
     """
 
     # load dataset PANDAS / NUMPY
-    my_dataset = read_csv("./labelled_dataset.csv")
+    my_dataset = read_csv("./input_folder/labelled_dataset.csv")
     label_obj = my_dataset["label"]
     data_obj = my_dataset.drop(columns=["label", "time", "datetime"])
     # Note that unsupervised algorithms answer with 0/1.
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     train_data, test_data, train_label, test_label = \
         train_test_split(data_obj, label_obj, test_size=0.5)
 
-    # choose classifier from PYOd, set of classifiers that I want to run and compare
+    # choose classifier from PYOD, set of classifiers that I want to run and compare
     classifiers = [HBOS(contamination=0.5, n_bins=20),
                    HBOS(contamination=0.5, n_bins=10),
                    ABOD(contamination=0.5),
